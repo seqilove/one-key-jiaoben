@@ -7,4 +7,4 @@ echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh
 /bin/bash anaconda3.sh -b -p /opt/conda
 rm -f anaconda3.sh
 #export PATH=/opt/conda/bin:$PATH
-source /etc/profile
+#source /etc/profile
