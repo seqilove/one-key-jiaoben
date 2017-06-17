@@ -13,8 +13,8 @@ apt-get update
 apt-get install -y linux-image-extra-$KER_VER
 reboot
 
-mkdir -p /tmp
-cat > /tmp/appexinstall.sh << TEMPEOF
+mkdir -p /appex
+cat > /appex/appexinstall.sh << TEMPEOF
 wget --no-check-certificate -qO /tmp/appex.sh "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh" && bash /tmp/appex.sh 'install' << EOF
 
 EOF
@@ -22,7 +22,7 @@ cp /etc/rc.local.old.ruisu /etc/rc.local
 rm /etc/rc.local.old.ruisu
 TEMPEOF
 
-# bash /tmp/appexinstall.sh 
+# bash /appex/appexinstall.sh 
 # ps aux | grep appex
 
 
@@ -32,6 +32,6 @@ if [ ! -f "/etc/rc.local.old.ruisu" ]; then
 fi
 # cp /etc/rc.local /etc/rc.local.old.ruisu
 sed -i '$d' /etc/rc.local
-echo "bash /tmp/appexinstall.sh" >> /etc/rc.local
+echo "bash /appex/appexinstall.sh" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
 reboot
