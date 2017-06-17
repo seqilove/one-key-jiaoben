@@ -11,7 +11,7 @@ sed -ir "s/GRUB_DEFAULT=.*/GRUB_DEFAULT=\"Advanced options for Ubuntu>Ubuntu, wi
 # update-grub
 apt-get update
 apt-get install -y linux-image-extra-$KER_VER
-reboot
+# reboot
 
 mkdir -p /appex
 cat > /appex/appexinstall.sh << TEMPEOF
