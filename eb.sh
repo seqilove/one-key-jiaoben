@@ -2,7 +2,7 @@
 x=$1
 echo $x
 
-sed -i "13s#.*#/root/setpwd1.sh \& sleep 10 \&\& \&\& /usr/bin/firefox-esr --display=localhost:1.0 --new-tab http://www.ebesucher.com/surfbar/ebcccac.$x >/dev/null 2>\&1 \&#" /etc/rc.local
+sed -i "13s#.*#/root/setpwd1.sh \&  \&\& sleep 10 \&\& /usr/bin/firefox-esr --display=localhost:1.0 --new-tab http://www.ebesucher.com/surfbar/ebcccac.$x >/dev/null 2>\&1 \&#" /etc/rc.local
 echo "15 * * * * reboot" > /var/spool/cron/root
 #echo "15 * * * * pkill firefox-esr && firefox-esr --display=localhost:1.0 --new-tab http://www.ebesucher.com/surfbar/ebcccac.$x >/dev/null 2>&1 &" > /var/spool/cron/root
 crontab /var/spool/cron/root
