@@ -93,7 +93,7 @@ DebianMirrorDirectory="$(echo -n "$tmpMirror" |awk -F''${DebianMirror}'' '{print
 
 [ -z $vDEB ] && vDEB='wheezy';
 [ -z $VER ] && VER='i386';
-[ -z $myPASSWORD ] && myPASSWORD='Vicer'
+[ -z $myPASSWORD ] && myPASSWORD='xiaofd'
 
 clear && echo -e "\n\033[36m# Install\033[0m\n"
 
