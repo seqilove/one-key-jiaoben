@@ -93,7 +93,7 @@ DebianMirrorDirectory="$(echo -n "$tmpMirror" |awk -F''${DebianMirror}'' '{print
 
 [ -z $vDEB ] && vDEB='wheezy';
 [ -z $VER ] && VER='i386';
-[ -z $myPASSWORD ] && myPASSWORD='xiaofd'
+[ -z $myPASSWORD ] && myPASSWORD='Vicer'
 
 clear && echo -e "\n\033[36m# Install\033[0m\n"
 
@@ -321,20 +321,11 @@ d-i grub-installer/bootdev string default
 d-i finish-install/reboot_in_progress note
 d-i debian-installer/exit/reboot boolean true
 d-i preseed/late_command string	\
-# sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \
-# sed -i 's/^.*PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config;
-cp /target/etc/ssh/sshd_config /target/etc/ssh/sshd_config.old
-sed -i "s#Port .*#Port 3927#g" /target/etc/ssh/sshd_config
-if test -z "`cat /target/etc/ssh/sshd_config | grep "^PasswordAuthentication no$"`" ; then
-    echo "Disable the password login method."
-    echo -e "\nPasswordAuthentication no" >> /target/etc/ssh/sshd_config
-else
-    echo "Already disable the password."
-fi
-# enable root login with rsa-key & without password
-sed -i 's/^.*PermitRootLogin.*/PermitRootLogin without-password/g' /target/etc/ssh/sshd_config
-mkdir -p /target/root/.ssh
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCfuo9/cfgAHy8HYEGVxY+wklHlnrAQ0bPsz6FcAahXQXqw7OdrBzFpkh4U0a7f/Ir0BVgzeYIdDIOL8Ow9Ko1UHldJRCFyy/9W8ji2MGF2YgOUMxmxrCOD1DeOOh04Xrjqx5kPxiscHDZIZEuUF6eM20h3HR+D4xN/3H0OYRkMAaUrSoR8QZVg5P5QSni+HOT6JPHfk7rocKnk/0aQbLPMhSCLjAP4iyM9Fhotn6ofjw9aJnxp/agjwvJPkYSCmC5LJY8Mrv3Xpl4/cjknN0NbxMLUEhXXPDvGnPdS+KSAfpoHDTpm2Zi/WuVtf7AUP0ao0OnWbiPpQcvlEzxXhAm88ipzlY8n4mUnkyR7wIn6nf8y3HeOo8RVwjXWxsc6hNh6gPmNMlJeJo9FGMDxmriX/dRaAqsoYMRtxW3TNxMkfLXKTGs3ykEb/H/WXirwAPpHnSxbCY9/JVvfQMYDctZO+bZ3NV6Nvv5d2ATjq+1FWWaIq6vNkgMQKqs4mxw5CZUGnx4Zd6DMM1VkfA4W3hiNedoFyhSaQWVucza2gdHT7MPDJxNV6TNJErjo6wiobHOXyWghop4UjO32MMhRWyKAhdn3iCIPUglLloEEpvYI0b/TTd5ZdobHAjh+smX9mlIJe3yaQSPlA4sp6MPOjGhC/r08u+6hkmjE1Ycmgw7W7Q== JuiceSSH" >  /target/root/.ssh/authorized_keys
+cp /target/etc/ssh/sshd_config /target/etc/ssh/sshd_config.old; \
+sed -i "s#Port .*#Port 3927#g" /target/etc/ssh/sshd_config; \
+sed -i 's/^.*PermitRootLogin.*/PermitRootLogin without-password/g' /target/etc/ssh/sshd_config; \
+mkdir -p /target/root/.ssh; \
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCfuo9/cfgAHy8HYEGVxY+wklHlnrAQ0bPsz6FcAahXQXqw7OdrBzFpkh4U0a7f/Ir0BVgzeYIdDIOL8Ow9Ko1UHldJRCFyy/9W8ji2MGF2YgOUMxmxrCOD1DeOOh04Xrjqx5kPxiscHDZIZEuUF6eM20h3HR+D4xN/3H0OYRkMAaUrSoR8QZVg5P5QSni+HOT6JPHfk7rocKnk/0aQbLPMhSCLjAP4iyM9Fhotn6ofjw9aJnxp/agjwvJPkYSCmC5LJY8Mrv3Xpl4/cjknN0NbxMLUEhXXPDvGnPdS+KSAfpoHDTpm2Zi/WuVtf7AUP0ao0OnWbiPpQcvlEzxXhAm88ipzlY8n4mUnkyR7wIn6nf8y3HeOo8RVwjXWxsc6hNh6gPmNMlJeJo9FGMDxmriX/dRaAqsoYMRtxW3TNxMkfLXKTGs3ykEb/H/WXirwAPpHnSxbCY9/JVvfQMYDctZO+bZ3NV6Nvv5d2ATjq+1FWWaIq6vNkgMQKqs4mxw5CZUGnx4Zd6DMM1VkfA4W3hiNedoFyhSaQWVucza2gdHT7MPDJxNV6TNJErjo6wiobHOXyWghop4UjO32MMhRWyKAhdn3iCIPUglLloEEpvYI0b/TTd5ZdobHAjh+smX9mlIJe3yaQSPlA4sp6MPOjGhC/r08u+6hkmjE1Ycmgw7W7Q== JuiceSSH" > /target/root/.ssh/authorized_keys;
 EOF
 [ "$AutoNet" -eq '1' ] && {
 sed -i '/netcfg\/disable_autoconfig/d' /boot/tmp/preseed.cfg
