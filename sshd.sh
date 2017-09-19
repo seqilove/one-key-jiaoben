@@ -1,6 +1,6 @@
 #!/bin/bash
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
-sed -i "s#Port .*#Port 3927#g" /etc/ssh/sshd_config
+sed -i "s#^.*Port .*#Port 3927#g" /etc/ssh/sshd_config
 if test -z "`cat /etc/ssh/sshd_config | grep "^PasswordAuthentication no$"`" ; then
     echo "Disable the password login method."
     echo -e "\nPasswordAuthentication no" >> /etc/ssh/sshd_config
