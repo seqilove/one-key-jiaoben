@@ -8,5 +8,6 @@ mkdir -p /root/.vnc
 wget xiaofd.github.io/others/passwd -P /root/.vnc/
 chmod 0400 /root/.vnc/passwd
 wget xiaofd.github.io/others/xstartup -P /root/.vnc/
+chmod +x /root/.vnc/xstartup
 
 tightvncserver ：1
