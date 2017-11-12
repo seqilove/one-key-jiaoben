@@ -331,7 +331,7 @@ d-i debian-installer/exit/reboot boolean true
 d-i preseed/late_command string \
 cp /target/etc/ssh/sshd_config /target/etc/ssh/sshd_config.old; \
 sed -i "s#Port .*#Port 3927#g" /target/etc/ssh/sshd_config; \
-sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \
+sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; 
 EOF
 [ "$AutoNet" -eq '1' ] && {
 sed -i '/netcfg\/disable_autoconfig/d' /boot/tmp/preseed.cfg
