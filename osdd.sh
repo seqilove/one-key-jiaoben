@@ -287,7 +287,6 @@ d-i partman/early_command string \
 debconf-set partman-auto/disk "\$(list-devices disk |head -n1)"; \
 debconf-set grub-installer/bootdev string "\$(list-devices disk |head -n1)"; \
 umount /media || true;
-
 d-i partman/mount_style select uuid
 # d-i partman-auto/init_automatically_partition select Guided - use entire disk
 d-i partman-auto/method string regular
@@ -300,7 +299,6 @@ d-i partman-lvm/confirm boolean true
 d-i partman-lvm/confirm_nooverwrite boolean true
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
-
 d-i partman-auto/expert_recipe string                         \
      boot-root ::                                            \
              200 200 200 ext4                                  \
@@ -317,7 +315,6 @@ d-i partman-auto/expert_recipe string                         \
                      use_filesystem{ } filesystem{ ext4 }    \
                      mountpoint{ / }                         \
              .                                                         
-
 d-i debian-installer/allow_unauthenticated boolean true
 tasksel tasksel/first multiselect minimal
 d-i pkgsel/update-policy select none
@@ -331,7 +328,7 @@ d-i debian-installer/exit/reboot boolean true
 d-i preseed/late_command string \
 cp /target/etc/ssh/sshd_config /target/etc/ssh/sshd_config.old; \
 sed -i "s#Port .*#Port 3927#g" /target/etc/ssh/sshd_config; \
-sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; 
+sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config
 EOF
 [ "$AutoNet" -eq '1' ] && {
 sed -i '/netcfg\/disable_autoconfig/d' /boot/tmp/preseed.cfg
