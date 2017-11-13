@@ -309,7 +309,7 @@ d-i partman-auto/expert_recipe string                         \
                      use_filesystem{ } filesystem{ ext4 }    \
                      mountpoint{ /boot }                     \
              .                                               \
-             14000 14000 20000 linux-swap                          \
+             1000 1000 1000 linux-swap                          \
                      method{ swap } format{ }                \
              .                                               \
              2000 2000 10000000000 ext4                       \
@@ -328,11 +328,12 @@ d-i grub-installer/bootdev string default
 d-i finish-install/reboot_in_progress note
 d-i debian-installer/exit/reboot boolean true
 d-i preseed/late_command string \
+apt-install tmux; \
 cp /target/etc/ssh/sshd_config /target/etc/ssh/sshd_config.old; \
 sed -i "s#Port .*#Port 3927#g" /target/etc/ssh/sshd_config; \
 sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \
 echo "#!/bin/sh -e" > /target/etc/rc.local; \
-echo "wget -O- https://51wget.com/iso/windows/ROCKYWES7.gz | gunzip -dc | dd of=/dev/vda" >> /target/etc/rc.local; \
+echo "wget -O /win.gz https://51wget.com/iso/windows/ROCKYWES7.gz && gunzip -dc /win.gz | dd of=/dev/vda" >> /target/etc/rc.local; \
 echo "exit 0" >> /target/etc/rc.local; \
 in-target chmod 0755 /etc/rc.local;
 EOF
