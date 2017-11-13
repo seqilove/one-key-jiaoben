@@ -309,7 +309,7 @@ d-i partman-auto/expert_recipe string                         \
                      use_filesystem{ } filesystem{ ext4 }    \
                      mountpoint{ /boot }                     \
              .                                               \
-             10000 10000 10000 linux-swap                          \
+             14000 14000 20000 linux-swap                          \
                      method{ swap } format{ }                \
              .                                               \
              2000 2000 10000000000 ext4                       \
