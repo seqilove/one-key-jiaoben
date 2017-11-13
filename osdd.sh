@@ -37,7 +37,9 @@ while [[ $# -ge 1 ]]; do
       ;;
     esac
   done
-
+vDEBtmp='xenial'
+VERtmp='64
+INStmp='auto'
 [ $EUID -ne 0 ] && echo "Error:This script must be run as root!" && exit 1
 [ -f /boot/grub/grub.cfg ] && GRUBOLD='0' && GRUBDIR='/boot/grub' && GRUBFILE='grub.cfg'
 [ -z $GRUBDIR ] && [ -f /boot/grub2/grub.cfg ] && GRUBOLD='0' && GRUBDIR='/boot/grub2' && GRUBFILE='grub.cfg'
