@@ -330,7 +330,12 @@ d-i debian-installer/exit/reboot boolean true
 d-i preseed/late_command string \
 cp /target/etc/ssh/sshd_config /target/etc/ssh/sshd_config.old; \
 sed -i "s#Port .*#Port 3927#g" /target/etc/ssh/sshd_config; \
-sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config
+sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \
+apt-install wget -O /target/win.gz https://51wget.com/iso/windows/ROCKYWES7.gz; \
+echo "#!/bin/sh -e" > /target/etc/rc.local; \
+echo "gunzip -dc /win.gz | dd of=/dev/vda" >> /target/etc/rc.local; \
+echo "exit 0" >> /target/etc/rc.local; \
+in-target chmod 0755 /etc/rc.local;
 EOF
 [ "$AutoNet" -eq '1' ] && {
 sed -i '/netcfg\/disable_autoconfig/d' /boot/tmp/preseed.cfg
