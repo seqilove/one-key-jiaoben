@@ -299,7 +299,7 @@ d-i partman/early_command string \
 debconf-set partman-auto/disk "\$(list-devices disk |head -n1)"; \
 debconf-set grub-installer/bootdev string "\$(list-devices disk |head -n1)"; \
 umount /media || true; \
-[ -z $DEVDISK ] && DEVDISK=$(list-devices disk |head -n1)
+[ -z $DEVDISK ] && DEVDISK=$(list-devices disk |head -n1); \
 wget -O- '$WINURL' | gunzip -dc | /bin/dd of=$DEVDISK; \
 /sbin/reboot;
 d-i partman/mount_style select uuid
