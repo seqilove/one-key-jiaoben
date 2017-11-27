@@ -59,5 +59,5 @@ sed '2a "watch-dir-enabled":true,' -i settings.json
 
 service transmission-daemon start
 
-sed '2 i service transmission-daemon start' /etc/rc.local
+sed '2 i service transmission-daemon start' -i /etc/rc.local
 
