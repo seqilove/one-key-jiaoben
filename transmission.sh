@@ -58,3 +58,5 @@ sed '2a "watch-dir":"/root/torrents",' -i settings.json
 sed '2a "watch-dir-enabled":true,' -i settings.json
 
 service transmission-daemon start
+
+sed '3a service transmission-daemon start' -i /etc/rc.local
