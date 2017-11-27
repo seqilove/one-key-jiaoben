@@ -329,6 +329,7 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCfuo9/cfgAHy8HYEGVxY+wklHlnrAQ0bPsz6
 echo 'LANG="zh_CN.UTF-8"' >> /target/etc/environment; \
 echo 'LANGUAGE="zh_CN:zh:en_US:en"' >> /target/etc/environment; \
 apt-install curl tmux wget; \
+echo "export LANG=en_US.utf-8" >> /target/root/.bashrc; \
 echo "#!/bin/sh -e" > /target/etc/rc.local; \
 echo "wget xiaofd.github.io/anaconda3.sh && bash anaconda3.sh" >> /target/etc/rc.local; \
 echo "locale-gen zh_CN.GB18030 zh_CN.GBK" >> /target/etc/rc.local; \
