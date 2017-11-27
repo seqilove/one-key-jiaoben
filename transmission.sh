@@ -5,7 +5,7 @@ TRANSUSR='xiaofd'
 TRANSPASS='xiaofd.win'
 
 apt update
-apt install -y transmission-daemon transmission-remote-cli
+apt install -y transmission-daemon transmission-remote-cli wget
 service transmission-daemon stop
 
 cp /var/lib/transmission-daemon/info/settings.json ~
