@@ -24,12 +24,13 @@ while [[ $# -ge 1 ]]; do
     esac
   done
 
-TRANSPORT=$TRANSPORTtmp
-TRANSUSR=$TRANSUSRtmp
-TRANSPASS=$TRANSPASStmp
-[ -z TRANSPORTtmp ] && TRANSPORT=9091
-[ -z TRANSUSRtmp ] && TRANSUSR='xiaofd'
-[ -z TRANSPASStmp ] && TRANSPASS='xiaofd.win'
+TRANSPORT=9091
+TRANSUSR='xiaofd'
+TRANSPASS='xiaofd.win'
+
+[ -n $TRANSPORTtmp ] && TRANSPORT=$TRANSPORTtmp
+[ -n $TRANSUSRtmp ] && TRANSUSR=$TRANSUSRtmp
+[ -n $TRANSPASStmp ] && TRANSPASS=$TRANSPASStmp
 
 apt update
 apt install -y transmission-daemon transmission-remote-cli wget
