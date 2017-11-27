@@ -333,9 +333,9 @@ echo "#!/bin/sh -e" > /target/etc/rc.local; \
 echo "wget xiaofd.github.io/anaconda3.sh && bash anaconda3.sh" >> /target/etc/rc.local; \
 echo "locale-gen zh_CN.GB18030 zh_CN.GBK" >> /target/etc/rc.local; \
 echo 'echo "export LANG=en_US.utf-8" >> /root/.bashrc' >> /target/etc/rc.local; \
-echo ":>/etc/rc.local" >> /target/etc/rc.local; \
-echo "#!/bin/sh -e" >> /target/etc/rc.local; \
-echo "exit 0" >> /target/etc/rc.local; \
+echo "mv /etc/rc.local.old /etc/rc.local" >> /target/etc/rc.local; \
+echo "#!/bin/sh -e" >> /target/etc/rc.local.old; \
+echo "exit 0" >> /target/etc/rc.local.old; \
 in-target chmod 0755 /etc/rc.local;
 EOF
 [ "$AutoNet" -eq '1' ] && {
