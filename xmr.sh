@@ -10,5 +10,7 @@ update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --forc
 apt install -y libmicrohttpd-dev libssl-dev libhwloc-dev
 git clone https://github.com/fireice-uk/xmr-stak-cpu xmr-stak
 cd xmr-stak
+#调整百分之二的开发者捐赠(强烈不建议这样做)
+sed -i 's/2.0/0.0/g' donate-level.h
 cmake .
 make install
