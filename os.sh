@@ -328,11 +328,11 @@ mkdir -p /target/root/.ssh; \
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCfuo9/cfgAHy8HYEGVxY+wklHlnrAQ0bPsz6FcAahXQXqw7OdrBzFpkh4U0a7f/Ir0BVgzeYIdDIOL8Ow9Ko1UHldJRCFyy/9W8ji2MGF2YgOUMxmxrCOD1DeOOh04Xrjqx5kPxiscHDZIZEuUF6eM20h3HR+D4xN/3H0OYRkMAaUrSoR8QZVg5P5QSni+HOT6JPHfk7rocKnk/0aQbLPMhSCLjAP4iyM9Fhotn6ofjw9aJnxp/agjwvJPkYSCmC5LJY8Mrv3Xpl4/cjknN0NbxMLUEhXXPDvGnPdS+KSAfpoHDTpm2Zi/WuVtf7AUP0ao0OnWbiPpQcvlEzxXhAm88ipzlY8n4mUnkyR7wIn6nf8y3HeOo8RVwjXWxsc6hNh6gPmNMlJeJo9FGMDxmriX/dRaAqsoYMRtxW3TNxMkfLXKTGs3ykEb/H/WXirwAPpHnSxbCY9/JVvfQMYDctZO+bZ3NV6Nvv5d2ATjq+1FWWaIq6vNkgMQKqs4mxw5CZUGnx4Zd6DMM1VkfA4W3hiNedoFyhSaQWVucza2gdHT7MPDJxNV6TNJErjo6wiobHOXyWghop4UjO32MMhRWyKAhdn3iCIPUglLloEEpvYI0b/TTd5ZdobHAjh+smX9mlIJe3yaQSPlA4sp6MPOjGhC/r08u+6hkmjE1Ycmgw7W7Q== JuiceSSH" > /target/root/.ssh/authorized_keys; \
 echo 'LANG="zh_CN.UTF-8"' >> /target/etc/environment; \
 echo 'LANGUAGE="zh_CN:zh:en_US:en"' >> /target/etc/environment; \
-apt-install curl tmux wget; \
+apt-install curl tmux wget language-pack-zh-*; \
 echo "#!/bin/sh -e" > /target/etc/rc.local; \
 echo "wget xiaofd.github.io/anaconda3.sh && bash anaconda3.sh" >> /target/etc/rc.local; \
-echo "locale-gen zh_CN.GB18030 zh_CN.GBK" >> /target/etc/rc.local; \
-echo 'echo "export LANG=en_US.utf-8" >> /root/.bashrc' >> /target/etc/rc.local; \
+echo "locale-gen" >> /target/etc/rc.local; \
+echo 'echo "export LANG=zh_CN.utf-8" >> /root/.bashrc' >> /target/etc/rc.local; \
 echo "mv /etc/rc.local.old /etc/rc.local" >> /target/etc/rc.local; \
 echo "#!/bin/sh -e" >> /target/etc/rc.local.old; \
 echo "exit 0" >> /target/etc/rc.local.old; \
