@@ -213,7 +213,7 @@ sed -i "/$LinuxIMG.*\//c\\\t$LinuxIMG\\t\/xiaofd\/initrd.img" $GRUBDIR/$GRUBFILE
 }
 
 [ "$Type" == 'NoBoot' ] && {
-sed -i "/$LinuxKernel.*\//c\\\t$LinuxKernel\\t\/vmlinuz ks=hd:$DEVPATH:\/xiaofd\/ks.cfg" $GRUBDIR/$GRUBFILE
+sed -i "/$LinuxKernel.*\//c\\\t$LinuxKernel\\t\/vmlinuz inst.ks=hd:$DEVPATH:\/xiaofd\/ks.cfg" $GRUBDIR/$GRUBFILE
 sed -i "/$LinuxIMG.*\//c\\\t$LinuxIMG\\t\/initrd.img" $GRUBDIR/$GRUBFILE
 }
 
