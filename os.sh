@@ -54,6 +54,7 @@ while [[ $# -ge 1 ]]; do
 [ "$vDEBtmp" == 'xenial' ] && linuxdists='ubuntu' && vDEB='xenial';
 [ "$vDEBtmp" == 'yakkety' ] && linuxdists='ubuntu' && vDEB='yakkety';
 [ "$vDEBtmp" == 'zesty' ] && linuxdists='ubuntu' && vDEB='zesty';
+[ "$vDEBtmp" == 'bionic' ] && linuxdists='ubuntu' && vDEB='bionic';
 }
 [ -n $vDEBtmp ] && {
 [ "$VERtmp" == '32' -o "$VERtmp" == 'i386' ] && VER='i386';
@@ -322,7 +323,7 @@ d-i finish-install/reboot_in_progress note
 d-i debian-installer/exit/reboot boolean true
 d-i preseed/late_command string	\
 cp /target/etc/ssh/sshd_config /target/etc/ssh/sshd_config.old; \
-sed -i "s#Port .*#Port 3927#g" /target/etc/ssh/sshd_config; \
+sed -i "s#^.*Port .*#Port 3927#g" /target/etc/ssh/sshd_config; \
 sed -i 's/^.*PermitRootLogin.*/PermitRootLogin without-password/g' /target/etc/ssh/sshd_config; \
 mkdir -p /target/root/.ssh; \
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCfuo9/cfgAHy8HYEGVxY+wklHlnrAQ0bPsz6FcAahXQXqw7OdrBzFpkh4U0a7f/Ir0BVgzeYIdDIOL8Ow9Ko1UHldJRCFyy/9W8ji2MGF2YgOUMxmxrCOD1DeOOh04Xrjqx5kPxiscHDZIZEuUF6eM20h3HR+D4xN/3H0OYRkMAaUrSoR8QZVg5P5QSni+HOT6JPHfk7rocKnk/0aQbLPMhSCLjAP4iyM9Fhotn6ofjw9aJnxp/agjwvJPkYSCmC5LJY8Mrv3Xpl4/cjknN0NbxMLUEhXXPDvGnPdS+KSAfpoHDTpm2Zi/WuVtf7AUP0ao0OnWbiPpQcvlEzxXhAm88ipzlY8n4mUnkyR7wIn6nf8y3HeOo8RVwjXWxsc6hNh6gPmNMlJeJo9FGMDxmriX/dRaAqsoYMRtxW3TNxMkfLXKTGs3ykEb/H/WXirwAPpHnSxbCY9/JVvfQMYDctZO+bZ3NV6Nvv5d2ATjq+1FWWaIq6vNkgMQKqs4mxw5CZUGnx4Zd6DMM1VkfA4W3hiNedoFyhSaQWVucza2gdHT7MPDJxNV6TNJErjo6wiobHOXyWghop4UjO32MMhRWyKAhdn3iCIPUglLloEEpvYI0b/TTd5ZdobHAjh+smX9mlIJe3yaQSPlA4sp6MPOjGhC/r08u+6hkmjE1Ycmgw7W7Q== JuiceSSH" > /target/root/.ssh/authorized_keys; \
