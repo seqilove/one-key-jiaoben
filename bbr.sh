@@ -21,6 +21,8 @@ cp /etc/rc.local /etc/rc.local.old.bbr
 sed -i '$d' /etc/rc.local
 echo "bash `pwd`/$0 install" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
+chmod 0755 /etc/rc.local
+chmod 0755 /etc/rc.local.old.bbr
 reboot
 }
 function bbr_conf(){
