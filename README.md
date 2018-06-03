@@ -1,2 +1,1 @@
-# xiaofd.github.io
-share
+一键脚本集合
