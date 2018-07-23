@@ -34,4 +34,5 @@ fi
 sed -i '$d' /etc/rc.local
 echo "bash /appex/appexinstall.sh" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
+chmod 0755 /etc/rc.local
 reboot
